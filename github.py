@@ -14,7 +14,7 @@ def geoid_parse_cty_fip(row):
 
 # function to extract the tract code from the id column
 def geoid_parse_cty_tract(row):
-    return #complete this statement
+    return row['id'][-5:]
 
 # function to extract the county name from the 'Geographic Area Name' column
 # This function is completed as an example
@@ -38,7 +38,7 @@ df = pd.read_csv(filepath)
 ''' Create new columns 'in DataFrame '''
 ''' Remove comments below as the respective functions are completed '''
 df['fips'] = df.apply(geoid_parse_cty_fip, axis=1)
-#df['tract_geoid'] = df.apply(geoid_parse_cty_tract, axis=1)
+df['tract_geoid'] = df.apply(geoid_parse_cty_tract, axis=1)
 df['name_county'] =  df.apply(county_name, axis=1)
 #df['name_state'] =  df.apply(state_name, axis=1)
 #df['num_tract'] =  df.apply(tract_num, axis=1)
